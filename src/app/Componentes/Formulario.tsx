@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react'
+import { Persona } from '../Interfaces/IFormulario'
+import { registrarPersona } from '../Firebase/Promesas'
 
 export const Formulario = () => {
   const [nombre, setNombre] = useState("")
@@ -13,6 +15,14 @@ export const Formulario = () => {
     }else{
       setNombre(nombre.trim())
     }
+
+    //Asuman que se valido todo
+    const p:Persona = {
+        nombre,
+        apellido,
+        edad:parseInt(edad)
+    }
+    registrarPersona(p)
     console.log(nombre);
     console.log(apellido);
     console.log(edad);
